@@ -1,84 +1,59 @@
-import csv
 import os
+import csv
 
-# Create file path for reading the election data
-PyPoll_data = os.path.join("..", "Resources", "election_data.csv")
+#Path to collect data from the Resources folder
+budget_file = os.path.join('Resources','budget_data.csv')
 
-# Create file path for saving the output
-output_folder = os.path.join("..", "Analysis")
-output_file = os.path.join(output_folder, "election_results.txt")
+#Define the sum of "budget_data" and "Pybank_budget" is the sole parameter 
 
-# Improved Reading using CSV module
-with open(PyPoll_data) as csvfile:
-    # CSV reader specifies delimiter and variable that holds contents
-    csvreader = csv.reader(csvfile, delimiter=',')
+def total_budget(Pybank_budget):
 
-    # Read the header row
-    csv_header = next(csvreader)
-    print(f"CSV Header: {csv_header}")
+    Date = (Pybank_budget [0])
+    Profit_losses = (Pybank_budget [1])
 
-    # Initialize variables
-    total_votes = 0
-    candidate_votes = {}
-    winner = ""
-    winner_votes = 0
+    #Total number of months in Pybank_budget 
+Total_months = len(Date) # Is there a reason why Date is showing an error 86
 
-    # Loop through the rows to count votes and track candidates
+#The total amount of "Profit/Losses"
+
+Total_Profit= sum(Profit_losses) #Is there a reason why Profit_losses is showing an error $22564198
+
+#this will be the sum of the losses (-) and the average- losses/profit (totals) $-8311.11 (1111.11)
+Change_in_Profit = 
+
+# I will use the max function to find the greatest increase in Profits ($1862002)
+Max_Profit = 
+
+ # I will use the min  function to find the greatet decrease in Profits $-1825558
+Min_Profit = 
+
+#Read in the csv file 
+with open(budget_file, 'r') as csvfile:
+    #Split the data on commas
+    csvreader = csv.reader(csvfile, delimiter = ',')
+    print(csvreader)
+
+# Read and print headers and rows
+
+    header = next(csvreader) 
+    print(f"header; {header}")
     for row in csvreader:
-        candidate_name = row[2]
-        
-        # Total vote count
-        total_votes += 1
+        #print(row)
 
-        # Add candidate to the dictionary if not already present
-        if candidate_name not in candidate_votes:
-            candidate_votes[candidate_name] = 0
-        
-        # Add vote to the candidate's total
-        candidate_votes[candidate_name] += 1
+#Define the sum of the "budget_data" and "Pybank_budget" is the sole parameter 
+           
+          #  def total_budget(Pybank_budget):
+           #     Date = (Pybank_budget [0])
+            #    Profit_losses = (Pybank_budget [1])
 
-    # Calculate the percentage of votes
-    percentage_votes = {}
-    for candidate in candidate_votes:
-        votes = candidate_votes[candidate]
-        percentage = (votes / total_votes) * 100
-        percentage_votes[candidate] = percentage
-
-        # Determine the winner
-        if votes > winner_votes:
-            winner = candidate
-            winner_votes = votes
-
-# Prepare the output string
-output = (
-    "Election Results\n"
-    "-----------------\n"
-    f"Total Votes: {total_votes}\n"
-    "------------------\n"
-)
-
-for candidate in candidate_votes:
-    output += f"{candidate}: {percentage_votes[candidate]:.2f}% ({candidate_votes[candidate]})\n"
-
-output += (
-    "------------------\n"
-    f"Winner: {winner}\n"
-)
-
-# Print the results to the console
-print(output)
-
-# Write the results to a file in the output folder
-with open(output_file, "w") as file:
-    file.write(output)
-
-print(f"Results have been written to: {output_file}")
+#Total number of months of Pybank_budget
+             #   Total_months = len(Date)
+              #  print(Total_months)
 
 
 
+    
 
+    
 
-
-
-
-
+                           
